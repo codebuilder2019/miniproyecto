@@ -40,6 +40,9 @@
                     <li class="nav-item">
                         <a class="nav-link menu-option" href="{% url 'eventos' %}">Eventos</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link menu-option" href="{% url 'cart' %}">Cart</a>
+                    </li>
                     {% if user.username == "admin00" %}
                         <li class="nav-item">
                             <a class="nav-link menu-option" href="{% url 'gestion-items' %}">Gestion Items</a>
@@ -51,8 +54,6 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle menu-option" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ user }}</a>
                             <div class="dropdown-menu border-0 dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item menu-option" href="{% url 'index' %}">Perfil</a>
-                                <div class="dropdown-divider"></div>
                                 <a class="dropdown-item menu-option" href="log-out">Log Out</a>
                             </div>
                         </li>

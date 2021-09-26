@@ -2,5 +2,15 @@
 {% load static %}
 
 {% block body %}
-    <p>Canasta Agricola</p>
+<div id="main-container">
+    <h1>Canasta Agricola</h1>
+    {% for product in products %}
+    <p>{{product.name}}</p>
+    <p>{{product.price}}</p>
+    <p>{{product.discount}}</p>
+    <p>{{product.description}}</p>
+    <p>{{product.imgURL}}</p>
+    <br>
+    {% endfor %}
+</div>
 {% endblock %}

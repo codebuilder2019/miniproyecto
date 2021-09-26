@@ -1,0 +1,16 @@
+{% extends "general/layout.html" %}
+{% load static %}
+{% load mathfilters %}
+
+{% block body %}
+<div id="main-container">
+    <h1>Cart</h1>
+    {% for billDetail in billDetails %}
+    <p>{{billDetail.product.name}}</p>
+    <p>{{billDetail.product.price|sub:billDetail.product.discount}}</p>
+    <br>
+    {% endfor %}
+    <br>
+    {{bill.total}}
+</div>
+{% endblock %}

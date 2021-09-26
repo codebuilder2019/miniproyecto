@@ -2,5 +2,12 @@
 {% load static %}
 
 {% block body %}
-    <p>Eventos</p>
+<div id="main-container">
+    <h1>Eventos</h1>
+    {% for event in events %}
+    <p>{{event.name}}</p>
+    <p>{{event.description}}</p>
+    <br>
+    {% endfor %}
+</div>
 {% endblock %}
