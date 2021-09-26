@@ -5,11 +5,29 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import User
 
+def agro_oferta_view(request):
+    return render(request, "general/agro_oferta.html")
+
+def canasta_agricola_view(request):
+    return render(request, "general/canasta_agricola.html")
+
+def emprendimientos_view(request):
+    return render(request, "general/emprendimientos.html")
+
+def eventos_view(request):
+    return render(request, "general/eventos.html")
+
+def gestion_items_view(request):
+    return render(request, "general/gestion_items.html")
+
 def index(request):
     if request.user.is_authenticated:
         return HttpResponseRedirect(reverse("maintenance"))
     else:
         return HttpResponseRedirect(reverse("login"))
+
+def inversionistas_view(request):
+    return render(request, "general/inversionistas.html")
 
 def login_view(request):
     if request.method == "POST":
