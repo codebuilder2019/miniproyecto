@@ -3,12 +3,31 @@
 
 {% block body %}
 <div id="main-container">
-    <h1>Inversionistas</h1>
+    <h1><center>Inversionistas</center></h1>
     {% for investor in investors %}
-    <p>{{investor.name}}</p>
+    <!--<p>{{investor.name}}</p>
     <p>{{investor.description}}</p>
     <p>{{investor.email}}</p>
     <p>{{investor.imgURL}}</p>
+    <h3 class="title">{{ investor.name}}</h3>   
+    <img id="investor_img" src="{{investor.imgURL}}" class="img-fluid" style="max-height: 450px;" alt="">
+    <p>{{investor.description}}</p>
+    <p>{{investor.email}}</p>-->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-8 p-2">
+                <article class="card h-100 bg-sucess">
+                    <center>
+                    <h3 class="title">{{investor.name}}</h3>    
+                    <img id="investor_img" src="{{investor.imgURL}}" class="img-fluid" style="max-height: 450px;" alt="">
+                     <p>{{investor.description}}</p>
+                     <p>{{investor.email}}</p>
+                     </center>
+                </article>
+            </div>            
+        </div>
+    </div>
     <br>
     {% endfor %}
 </div>

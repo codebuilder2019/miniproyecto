@@ -3,10 +3,20 @@
 
 {% block body %}
 <div id="main-container">
-    <h1>Eventos</h1>
-    {% for event in events %}
-    <p>{{event.name}}</p>
-    <p>{{event.description}}</p>
+    <h1><center>Eventos</center></h1>
+    {% for event in events %}    
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-8 p-2">
+                <article class="card h-100 bg-sucess">
+                    <center>
+                        <h3 class="title">{{ event.name}}</h3>     
+                        <p>{{event.description}}</p>
+                     </center>
+                </article>
+            </div>            
+        </div>
+    </div>
     <br>
     {% endfor %}
 </div>

@@ -275,3 +275,30 @@ html {
   display: none;
   font-weight: bold;
 }
+/*--
+  imagen producto 
+--*/
+.product-img {
+  padding: 0 0 10px 0;
+  display: block;
+  margin: 0 auto auto 0;
+  max-height: 450px;
+}
+/*--
+  imagen emprendimientos
+--*/
+.undertaking_img{
+  padding: 0 0 10px 0;
+  display: block;
+  margin: 0 auto auto 0;
+  max-height: 450px;
+}
+/*--
+  imagen inversionistas
+--*/
+.investor_img{
+  padding: 0 0 10px 0;
+  display: block;
+  margin: 0 auto auto 0;
+  max-height: 450px;
+}
