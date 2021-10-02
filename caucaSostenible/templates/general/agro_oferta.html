@@ -2,27 +2,30 @@
 {% load static %}
 
 {% block body %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <div id="main-container">
-    <h1><center>Agro Oferta</center></h1>
-    <br>      
-    {% for product in products %}          
-        <div class="container">
-            <div class="row">            
-                <div class="col-2 col-lg-2 p-2">                         
-                    <article class="card h-100 bg-sucess">
-                        <center>
-                        <h3 class="title">{{product.name}}</h3>    
-                        <img id="product_img" src="{{product.imgURL}}" class="img-fluid" style="max-height: 100px;" alt="">
-                        <p>Cantidad: {{product.description}}</p>
-                        <p>Descuento: {{product.discount}}</p>
-                        <p>Precio: {{product.price}}</p>
-                         </center>
-                    </article>                          
-                </div>                    
-            </div>
+    <h1>
+        <center>Agro Oferta</center>
+    </h1>
+    <br>
+    <div class="form-row">
+        {% for product in products %}
+        <div class="col-12 col-sm-4 col-lg-2 p-2">
+            <article class="card h-100 bg-sucess">
+                <center>
+                    <h3 class="title">{{product.name}}</h3>
+                    <img id="product_img" src="{{product.imgURL}}" class="img-fluid" style="max-height: 100px;" alt="">
+                    <p>Cantidad: {{product.description}}</p>
+                    <p>Descuento: {{product.discount}}</p>
+                    <p>Precio: {{product.price}}</p>
+                </center>
+            </article>
+
         </div>
+
         <br>
-        {% endfor %}  
-    
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}
