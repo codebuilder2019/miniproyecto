@@ -34,6 +34,16 @@ h3 {
     color: #fcdd09;
     margin: 0 0 7px 0;
 }
+h4{
+    color: #1b1b1de8;
+    margin: 0 0 7px 0;
+    font-family: garamond;
+}
+h5{
+    color: #d30c0cd2;
+    margin: 0 0 7px 0;
+    font-family: 'Times New Roman', Times, serif;
+}
 
 hr {
   margin-top: 10px;
@@ -282,7 +292,7 @@ html {
   padding: 0 0 10px 0;
   display: block;
   margin: 0 auto auto 0;
-  max-height: 450px;
+  max-height: 100px;
 }
 /*--
   imagen emprendimientos
@@ -291,7 +301,7 @@ html {
   padding: 0 0 10px 0;
   display: block;
   margin: 0 auto auto 0;
-  max-height: 450px;
+  max-height: 100px;
 }
 /*--
   imagen inversionistas
@@ -300,5 +310,5 @@ html {
   padding: 0 0 10px 0;
   display: block;
   margin: 0 auto auto 0;
-  max-height: 450px;
+  max-height: 100px;
 }

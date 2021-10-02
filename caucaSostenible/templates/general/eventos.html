@@ -4,10 +4,10 @@
 {% block body %}
 <div id="main-container">
     <h1><center>Eventos</center></h1>
-    {% for event in events %}    
+    {% for event in events %}  
     <div class="container">
         <div class="row">
-            <div class="col-12 col-lg-8 p-2">
+            <div class="col-3 col-lg-3 p-2">
                 <article class="card h-100 bg-sucess">
                     <center>
                         <h3 class="title">{{ event.name}}</h3>     
@@ -17,6 +17,7 @@
             </div>            
         </div>
     </div>
+    
     <br>
     {% endfor %}
 </div>

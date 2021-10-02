@@ -1,34 +1,30 @@
 {% extends "general/layout.html" %}
 {% load static %}
 
-{% block body %}
+{% block body %}    
 <div id="main-container">
-    <h1><center>Inversionistas</center></h1>
+    <h1><center>Inversionistas</center></h1>    
     {% for investor in investors %}
-    <!--<p>{{investor.name}}</p>
-    <p>{{investor.description}}</p>
-    <p>{{investor.email}}</p>
-    <p>{{investor.imgURL}}</p>
-    <h3 class="title">{{ investor.name}}</h3>   
-    <img id="investor_img" src="{{investor.imgURL}}" class="img-fluid" style="max-height: 450px;" alt="">
-    <p>{{investor.description}}</p>
-    <p>{{investor.email}}</p>-->
-
     <div class="container">
         <div class="row">
-            <div class="col-12 col-lg-8 p-2">
+            <div class="col-3 col-lg-5 p-2">
                 <article class="card h-100 bg-sucess">
-                    <center>
-                    <h3 class="title">{{investor.name}}</h3>    
-                    <img id="investor_img" src="{{investor.imgURL}}" class="img-fluid" style="max-height: 450px;" alt="">
-                     <p>{{investor.description}}</p>
-                     <p>{{investor.email}}</p>
-                     </center>
+                    <div class="card-body">
+                        <div class="d-flex mb-3">                                    
+                            <img id="investor_img" src="{{investor.imgURL}}" class="border rounded-circle border-secondary border-3" style="max-height: 100px;" alt="">
+                            <div class="ps-lg-5">  
+                                <h4><b>{{investor.name}}</b></h4> 
+                                <h5>{{investor.email}}</h5>
+                            </div>
+                        </div>
+                        <div>
+                            <h4>{{investor.description}}</h4>
+                        </div>
+                    </div>
                 </article>
             </div>            
         </div>
-    </div>
-    <br>
-    {% endfor %}
+    </div>    
 </div>
+{% endfor %}
 {% endblock %}
