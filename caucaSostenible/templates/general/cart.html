@@ -4,8 +4,10 @@
 
 {% block body %}
 <div id="main-container">
-   
-    <h1><center>Carrito de Compras</center></h1>
+
+    <h1>
+        <center>Carrito de Compras</center>
+    </h1>
     <!--{% for billDetail in billDetails %}
     <p>{{billDetail.product.name}}</p>
     <p>{{billDetail.product.price|sub:billDetail.product.discount}}</p>
@@ -28,29 +30,44 @@
     </center>    
     </span>
 </div>-->
-<center>
-
-
-<table>
-    <thead>
-        <th><b>Producto</b></th>
-        <th><b>Precio</b></th>
-        <th><b>Eliminar</b></th>
-    </thead>
-    <tbody>        
-        {% for billDetail in billDetails %}
-        <tr>
-            <td>{{billDetail.product.name}}</td>
-            <td>{{billDetail.product.price|sub:billDetail.product.discount}}</td>
-            <td>
-                <a onclick="javascript: return confirm('¿Esta seguro de eliminar este producto?');" 
-                   href="?c=Producto&a=Eliminar&codigo=?php echo $item->codigo?>">
-                    Eliminar</a>
-            </td>   
-        </tr>             
-        {% endfor %}       
-    </tbody>    
-</table>
-<p><b>Total:</b>{{bill.total}}</p>  
-</center>
+    <center>
+        {% if billDetails %}
+            <table>
+                <thead>
+                    <th><b>Producto</b></th>
+                    <th><b>Precio</b></th>
+                    <th><b>Eliminar</b></th>
+                </thead>
+                <tbody>
+                    {% for billDetail in billDetails %}
+                    <tr>
+                        <td>{{billDetail.product.name}}</td>
+                        <td>{{billDetail.product.price|sub:billDetail.product.discount}}</td>
+                        <td>
+                            <button class="common-button" onclick="removeProduct('{{billDetail.product.id}}')">Eliminar</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <br>
+            <p class="common-text"><b>Total:</b> ${{bill.total}}</p>
+        {% else %}
+            <p class="common-text">No hay productos aun.</p>
+        {% endif %}
+    </center>
+{% endblock %}
+{% block script %}
+<script>
+    function removeProduct(productId) {
+        fetch('cart/product/' + productId, {
+            method: 'DELETE'
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.message);
+                location.href="{% url 'cart' %}"
+            });
+    }
+</script>
 {% endblock %}
