@@ -13,7 +13,7 @@
                 <center>
                     <h3 class="title">{{product.name}}</h3>
                     <img id="product_img" src="{{product.imgURL}}" class="img-fluid" style="max-height: 100px;" alt="">
-                    <p><b>Cantidad:</b> {{product.description}}</p>
+                     <p><b>Cantidad:</b> {{product.description}}</p>
                     <p>Descuento: {{product.discount}}</p>
                     <p>Precio: {{product.price}}</p>
                     <br>
@@ -21,6 +21,7 @@
                         onclick="addProduct('{{product.id}}')">Adquirir</button>
                     <p id="added-message-{{product.id}}" style="display: none"><b>Adquirido</b></p>
                 </center>
+
             </article>
         </div>
         {% endfor %}
