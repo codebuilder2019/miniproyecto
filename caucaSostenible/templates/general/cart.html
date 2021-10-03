@@ -13,7 +13,7 @@
     {% endfor %}
     <br>
     {{bill.total}} -->
-    <span class="span class="border border-1">
+    <!--<span class="span class="border border-1">
     {% for billDetail in billDetails %}
    
         <center>
@@ -27,5 +27,24 @@
         <p><b>Total:</b>{{bill.total}}</p>
     </center>    
     </span>
-</div>
+</div>-->
+<center>
+
+
+<table>
+    <thead>
+        <th><b>Producto</b></th>
+        <th><b>Precio</b></th>
+    </thead>
+    <tbody>        
+        {% for billDetail in billDetails %}
+        <tr>
+            <td>{{billDetail.product.name}}</td>
+            <td>{{billDetail.product.price|sub:billDetail.product.discount}}</td>   
+        </tr>             
+        {% endfor %}       
+    </tbody>    
+</table>
+<p><b>Total:</b>{{bill.total}}</p>  
+</center>
 {% endblock %}
