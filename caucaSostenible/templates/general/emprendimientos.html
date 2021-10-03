@@ -8,11 +8,11 @@
     </h1>
     <div class="form-row">
         {% for undertaking in undertakings %}
-        <div class="col-5 col-sm-4 col-lg-3 p-3">
+        <div class="col-6 col-sm-4 col-lg-3 p-3">
             <article class="card h-100 bg-sucess">
                 <center>
                     <h3 class="title">{{undertaking.name}}</h3>
-                    <img id="undertaking_img" src="{{undertaking.imgURL}}" class="img-fluid" style="max-height: 400px;"
+                    <img id="undertaking_img" src="{{undertaking.imgURL}}" class="img-fluid" style="max-height: 100px;"
                         alt="">
                     <p><b>Ubicación:</b>{{undertaking.location}}</p>
                     <p></p><b>Teléfono:</b>{{undertaking.phone}}</p>

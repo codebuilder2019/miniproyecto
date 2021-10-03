@@ -2,13 +2,9 @@
 {% load static %}
 
 {% block body %}
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
 <div id="main-container">
-    <h1>
-        <center>Agro Oferta</center>
-    </h1>
-    <br>
+    <h1><center>Agro Oferta</center></h1>    
     <div class="form-row">
         {% for product in products %}
         <div class="col-12 col-sm-4 col-lg-2 p-2">
@@ -16,16 +12,30 @@
                 <center>
                     <h3 class="title">{{product.name}}</h3>
                     <img id="product_img" src="{{product.imgURL}}" class="img-fluid" style="max-height: 100px;" alt="">
-                    <p>Cantidad: {{product.description}}</p>
-                    <p>Descuento: {{product.discount}}</p>
-                    <p>Precio: {{product.price}}</p>
+                    <p><b>Cantidad:</b>{{product.description}}</p>                    
+                    <p>Precio normal:{{product.price}}</p>
+                    <p>Descuento:{{product.discount}}</p>                    
+                    <button class="common-button" onclick="addProduct()">Agregar al Carrito</button>
                 </center>
             </article>
-
-        </div>
-
-        <br>
+        </div>        
         {% endfor %}
     </div>
 </div>
+<script>
+    
+    function addProduct () {
+            fetch('/cart/set_product_quantity/' + '{{ product.id }}/1')
+                .then(response => response.json())
+                .then(data => {
+                    renderProductQuantity("{{ product.id }}", data)
+                });
+        }
+        function renderProductQuantity (productId, data) {
+            document.getElementById("addProductButton").style.display = "none";           
+            document.getElementById("acceptedQuantity").innerHTML = data.addedItems + ' items added';
+            document.getElementById("quantity_" + productId).value = data.addedItems;
+            document.getElementById("updateQuantitySection").style.display = "block";
+        }
+</script>
 {% endblock %}
