@@ -25,13 +25,13 @@ h1 {
 }
 
 h2 {
-    color: #fcdd09;
+    color: #002255;
     font-weight: bold;
     margin: 0 0 7px 0;
 }
 
 h3 {
-    color: #fcdd09;
+    color: #002255;
     margin: 0 0 7px 0;
 }
 h4{
@@ -67,7 +67,7 @@ hr {
   border: none;
   border-radius: 4px;
   padding: 6px 8px;
-  margin: 0 0;
+  margin: 7px 6px;
 }
 
 .common-button:hover {
@@ -326,10 +326,10 @@ td, th{
   padding: 5px;
 }
 thead{
-  background-color: #33adff;  
+  background-color: #ffff00;  
 }
 tbody{
-  background-color: #ccebff;
+  background-color: white;
   color: black;
   font-family: Verdana, sans-serif;
 }

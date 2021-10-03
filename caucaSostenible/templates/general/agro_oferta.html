@@ -9,11 +9,13 @@
         <div class="col-12 col-sm-4 col-lg-2 p-2">
             <article class="card h-100 bg-sucess">
                 <center>
-                    <h3 class="title">{{product.name}}</h3>
+                    <h3><b>{{product.name}}</b></h3>
                     <img id="product_img" src="{{product.imgURL}}" class="img-fluid" style="max-height: 100px;" alt="">
-                    <p>Cantidad: {{product.description}}</p>
-                    <p>Descuento: {{product.discount}}</p>
-                    <p>Precio: {{product.price}}</p>
+                    <p><b>Precio: $</b> {{product.price}}</p>
+                    <p><b>Descuento: $</b> {{product.discount}}</p>
+                    <p><b>Cantidad:</b> {{product.description}}</p>
+                    
+                   
                     {% if user.is_authenticated %}
                         <br>
                         <button id="add-button-{{product.id}}" class="common-button"
