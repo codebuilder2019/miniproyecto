@@ -17,13 +17,32 @@
                     <p>Cantidad: {{product.description}}</p>
                     <p>Descuento: {{product.discount}}</p>
                     <p>Precio: {{product.price}}</p>
+                    <br>
+                    <button id="add-button-{{product.id}}" class="common-button"
+                        onclick="addProduct('{{product.id}}')">Adquirir</button>
+                    <p id="added-message-{{product.id}}" style="display: none"><b>Adquirido</b></p>
                 </center>
             </article>
-
         </div>
-
-        <br>
         {% endfor %}
     </div>
 </div>
+{% endblock %}
+{% block script %}
+<script>
+    var billDetails = JSON.parse('{{ billDetails | safe }}');
+
+    for (billDetail of billDetails) {
+        document.getElementById("add-button-" + billDetail.fields.product).style = "display: none";
+        document.getElementById("added-message-" + billDetail.fields.product).style = "display: block";
+    }
+
+    function addProduct(productId) {
+        fetch('cart/product/' + productId)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.message);
+            });
+    }
+</script>
 {% endblock %}

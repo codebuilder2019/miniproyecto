@@ -1,30 +1,69 @@
 from django.urls import reverse
 from django.shortcuts import render
+from django.core import serializers
+from django.http import JsonResponse
 from django.db import IntegrityError
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Bill, BillDetail, Event, Investor, Product, User, Undertaking
+from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
+
+@csrf_exempt
+@login_required
+def add_to_cart(request, productId):
+    try:
+        bill = Bill.objects.get(user=request.user)
+        product = Product.objects.get(id=productId)
+        billDetail = BillDetail(bill=bill, product=product)
+        billDetail.save()
+
+        calculateBillTotal(bill)
+
+        return JsonResponse({
+            "message": "Product added"
+        }, status=201)
+    except IntegrityError:
+        return JsonResponse({
+            "message": "Product not added"
+        }, status=406)
+
+def calculateBillTotal(bill):    
+    billTotal = 0
+    billDetails = BillDetail.objects.all().filter(bill=bill)
+
+    for aBillDetail in billDetails:
+        billTotal+= aBillDetail.product.price - aBillDetail.product.discount
+        print("A: " + str(billTotal))
+
+    bill.total = billTotal
+    bill.save()
 
 def cart_view(request):
     bill = Bill.objects.get(user=request.user)
     
     if bill:
         billDetails = BillDetail.objects.all().filter(bill=bill)
-    else:
-        bill = Bill(user=request.user, total=0)
-        bill.save()
-    
+
     return render(request, "general/cart.html", {"bill": bill, "billDetails": billDetails})
 
 def farming_offers_view(request):
     products = Product.objects.all().exclude(discount=0)
+    bill = Bill.objects.get(user=request.user)
+    
+    if bill:
+        billDetails = serializers.serialize("json", BillDetail.objects.all().filter(bill=bill))
 
-    return render(request, "general/agro_oferta.html", {"products": products})
+    return render(request, "general/agro_oferta.html", {"products": products, "billDetails": billDetails})
 
 def farming_stocks_view(request):
     products = Product.objects.all()
+    bill = Bill.objects.get(user=request.user)
+    
+    if bill:
+        billDetails = serializers.serialize("json", BillDetail.objects.all().filter(bill=bill))
 
-    return render(request, "general/canasta_agricola.html", {"products": products})
+    return render(request, "general/canasta_agricola.html", {"products": products, "billDetails": billDetails})
 
 def events_view(request):
     events = Event.objects.all()
@@ -89,6 +128,9 @@ def register(request):
         try:
             user = User.objects.create_user(username, email, password)
             user.save()
+
+            bill = Bill(user=request.user, total=0)
+            bill.save()
         except IntegrityError:
             return render(request, "general/register.html", {
                 "message": "Username already taken."
