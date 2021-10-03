@@ -50,7 +50,7 @@ def farming_offers_view(request):
     products = Product.objects.all().exclude(discount=0)
     billDetails = None
 
-    if  request.user.id != None:
+    if request.user.id != None:
         bill = Bill.objects.get(user=request.user)
         
         if bill:
@@ -62,13 +62,13 @@ def farming_stocks_view(request):
     products = Product.objects.all()
     billDetails = None
 
-    if  request.user.id != None:
+    if request.user.id != None:
         bill = Bill.objects.get(user=request.user)
         
         if bill:
             billDetails = serializers.serialize("json", BillDetail.objects.all().filter(bill=bill))
 
-    return render(request, "general/agro_oferta.html", {"products": products, "billDetails": billDetails})
+    return render(request, "general/canasta_agricola.html", {"products": products, "billDetails": billDetails})
 
 def events_view(request):
     events = Event.objects.all()
@@ -76,7 +76,6 @@ def events_view(request):
     return render(request, "general/eventos.html", {"events": events})
 
 def index(request):
-    print("INDEX")
     if request.user.is_authenticated:
         return render(request, "general/index.html")
     else:

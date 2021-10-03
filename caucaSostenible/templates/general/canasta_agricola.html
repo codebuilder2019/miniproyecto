@@ -11,19 +11,17 @@
                 <center>
                     <h3><b>{{product.name}}</b></h3>
                     <img id="product_img" src="{{product.imgURL}}" class="img-fluid" style="max-height: 100px;" alt="">
-                    <p><b>Precio: $</b>{{product.price}}</p>
-                    <p><b>Descuento: $</b>{{product.discount}}</p>
-                    <h2><b>Cantidad:</b>{{product.description}}</h2>               
-                   
+                    <p><b>Precio:</b> ${{product.price}}</p>
+                    <p><b>Descuento:</b> ${{product.discount}}</p>
+                    <p><b>Cantidad:</b> {{product.description}}</p>               
+                    
                     {% if user.is_authenticated %}
-                    <br>
-                    <button id="add-button-{{product.id}}" class="common-button"
-                        onclick="addProduct('{{product.id}}')">Adquirir</button>
-                    <p id="added-message-{{product.id}}" style="display: none"><b>Adquirido</b></p>
-                    <br>
+                        <br>
+                        <button id="add-button-{{product.id}}" class="common-button"
+                            onclick="addProduct('{{product.id}}')">Adquirir</button>
+                        <p id="added-message-{{product.id}}" style="display: none"><b>Adquirido</b></p>
                     {% endif %}
                 </center>
-
             </article>
         </div>
         {% endfor %}

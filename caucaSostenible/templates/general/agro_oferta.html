@@ -11,11 +11,10 @@
                 <center>
                     <h3><b>{{product.name}}</b></h3>
                     <img id="product_img" src="{{product.imgURL}}" class="img-fluid" style="max-height: 100px;" alt="">
-                    <p><b>Precio: $</b> {{product.price}}</p>
-                    <p><b>Descuento: $</b> {{product.discount}}</p>
+                    <p><b>Precio:</b> ${{product.price}}</p>
+                    <p><b>Descuento:</b> ${{product.discount}}</p>
                     <p><b>Cantidad:</b> {{product.description}}</p>
                     
-                   
                     {% if user.is_authenticated %}
                         <br>
                         <button id="add-button-{{product.id}}" class="common-button"
@@ -34,8 +33,12 @@
     var billDetails = JSON.parse('{{ billDetails | safe }}');
 
     for (billDetail of billDetails) {
-        document.getElementById("add-button-" + billDetail.fields.product).style = "display: none";
-        document.getElementById("added-message-" + billDetail.fields.product).style = "display: block";
+        aButton = document.getElementById("add-button-" + billDetail.fields.product);
+
+        if(aButton) {
+            aButton.style = "display: none";
+            document.getElementById("added-message-" + billDetail.fields.product).style = "display: block";
+        }
     }
 
     function addProduct(productId) {
