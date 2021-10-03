@@ -62,6 +62,12 @@ def cart_view(request):
 
     return render(request, "general/cart.html", {"bill": bill, "billDetails": billDetails})
 
+def cart_products_view(request):
+    products = Product.objects.all()
+
+    return render(request, "general/cart_producto.html", {"products": products})
+
+
 def farming_offers_view(request):
     products = Product.objects.all().exclude(discount=0)
     billDetails = None
