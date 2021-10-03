@@ -322,13 +322,16 @@ table{
 }
 
 td, th{
+  color: #078930;
   border: 1px solid white;
   text-align: left;
   padding: 5px;
 }
+
 thead{
-  background-color: #ffff00;  
+  background-color: #fcdd09;  
 }
+
 tbody{
   background-color: white;
   color: black;
