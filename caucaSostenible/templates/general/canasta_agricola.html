@@ -13,11 +13,12 @@
                 <center>
                     <h3 class="title">{{product.name}}</h3>
                     <img id="product_img" src="{{product.imgURL}}" class="img-fluid" style="max-height: 100px;" alt="">
-                    <p><b>Cantidad:</b>{{product.description}}</p>
+                     <p><b>Cantidad:</b> {{product.description}}</p>
                     <p>Descuento: {{product.discount}}</p>
                     <p>Precio: {{product.price}}</p>
-                    <br>
-                    <button class="common-button" onclick="addProduct()">Agregar al Carrito</button>                   
+                    <button class="common-button">Adquirir</button>
+                </center>
+
             </article>
         </div>
         {% endfor %}
