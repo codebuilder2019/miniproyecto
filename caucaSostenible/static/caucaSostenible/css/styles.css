@@ -312,3 +312,24 @@ html {
   margin: 0 auto auto 0;
   max-height: 100px;
 }
+/*tabla carrito de compras*/
+
+table{
+  font-family: Verdana, sans-serif;
+  border-collapse: collapse;
+  width: 40%;    
+}
+
+td, th{
+  border: 1px solid white;
+  text-align: left;
+  padding: 5px;
+}
+thead{
+  background-color: #33adff;  
+}
+tbody{
+  background-color: #ccebff;
+  color: black;
+  font-family: Verdana, sans-serif;
+}

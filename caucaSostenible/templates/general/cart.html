@@ -35,12 +35,18 @@
     <thead>
         <th><b>Producto</b></th>
         <th><b>Precio</b></th>
+        <th><b>Eliminar</b></th>
     </thead>
     <tbody>        
         {% for billDetail in billDetails %}
         <tr>
             <td>{{billDetail.product.name}}</td>
-            <td>{{billDetail.product.price|sub:billDetail.product.discount}}</td>   
+            <td>{{billDetail.product.price|sub:billDetail.product.discount}}</td>
+            <td>
+                <a onclick="javascript: return confirm('¿Esta seguro de eliminar este producto?');" 
+                   href="?c=Producto&a=Eliminar&codigo=?php echo $item->codigo?>">
+                    Eliminar</a>
+            </td>   
         </tr>             
         {% endfor %}       
     </tbody>    
