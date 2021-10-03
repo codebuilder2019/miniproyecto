@@ -14,10 +14,12 @@
                     <p>Cantidad: {{product.description}}</p>
                     <p>Descuento: {{product.discount}}</p>
                     <p>Precio: {{product.price}}</p>
-                    <br>
-                    <button id="add-button-{{product.id}}" class="common-button"
-                        onclick="addProduct('{{product.id}}')">Adquirir</button>
-                    <p id="added-message-{{product.id}}" style="display: none"><b>Adquirido</b></p>
+                    {% if user.is_authenticated %}
+                        <br>
+                        <button id="add-button-{{product.id}}" class="common-button"
+                            onclick="addProduct('{{product.id}}')">Adquirir</button>
+                        <p id="added-message-{{product.id}}" style="display: none"><b>Adquirido</b></p>
+                    {% endif %}
                 </center>
             </article>
         </div>
