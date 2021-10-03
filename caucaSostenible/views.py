@@ -12,21 +12,37 @@ from django.contrib.auth.decorators import login_required
 @csrf_exempt
 @login_required
 def add_to_cart(request, productId):
-    try:
-        bill = Bill.objects.get(user=request.user)
-        product = Product.objects.get(id=productId)
-        billDetail = BillDetail(bill=bill, product=product)
-        billDetail.save()
+    if request.method == "GET":
+        try:
+            bill = Bill.objects.get(user=request.user)
+            product = Product.objects.get(id=productId)
+            billDetail = BillDetail(bill=bill, product=product)
+            billDetail.save()
 
-        calculateBillTotal(bill)
+            calculateBillTotal(bill)
 
-        return JsonResponse({
-            "message": "Product added"
-        }, status=201)
-    except IntegrityError:
-        return JsonResponse({
-            "message": "Product not added"
-        }, status=406)
+            return JsonResponse({
+                "message": "Product added"
+            }, status=201)
+        except IntegrityError:
+            return JsonResponse({
+                "message": "Product not added"
+            }, status=406)
+    elif request.method == "DELETE":
+        try:
+            bill = Bill.objects.get(user=request.user)
+            product = Product.objects.get(id=productId)
+            billDetail = BillDetail.objects.get(bill=bill, product=product).delete()
+
+            calculateBillTotal(bill)
+
+            return JsonResponse({
+                "message": "Product removed"
+            }, status=201)
+        except IntegrityError:
+            return JsonResponse({
+                "message": "Product not removed"
+            }, status=406)
 
 def calculateBillTotal(bill):    
     billTotal = 0
