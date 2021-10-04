@@ -6,14 +6,15 @@
     <center><h2>Nuevo Producto</h2></center>
     <br>
     <div class="form-group2">
-        <form action="" method="">          
+        <form action="productos/0" method="POST">
+            {% csrf_token %}
             <div style="display: flex; align-items: center">   
                 <input class="form-input" type="text" name="Nombre" id="nombre" placeholder="Ingrese Nombre del Producto">
                 <input class="form-input" type="text" name="Precio" id="precio" placeholder="Ingrese Precio">
-                <input class="form-input" type="text" name="Descuento" id="Descuento" placeholder="ingrese Descuento">
-                <input class="form-input" type="text" name="Descripción" id="Descripción" placeholder="Ingrese Descripción"> 
-                <input class="form-input" type="text" name="ImgenURL" id="imagen" placeholder="Ingrese imagen URL">           
-                <button class="common-button" onclick="addProduct('{{product.id}}')">Agregar</button>          
+                <input class="form-input" type="text" name="Descuento" id="descuento" placeholder="ingrese Descuento">
+                <input class="form-input" type="text" name="Descripcion" id="descripcion" placeholder="Ingrese Descripción"> 
+                <input class="form-input" type="text" name="ImagenURL" id="imagen" placeholder="Ingrese imagen URL">           
+                <input class="common-button" type="submit" value="Agregar">          
             </div>
         </form>
     </div>

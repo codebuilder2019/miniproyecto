@@ -181,6 +181,26 @@ def maintenance(request):
 @csrf_exempt
 @login_required
 def products(request, productId):
+    print("A")
+    if request.method == "POST":
+        try:
+            print("B")
+            name = request.POST["Nombre"]
+            price = request.POST["Precio"]
+            discount = request.POST["Descuento"]
+            description = request.POST["Descripcion"]
+            imgURL = request.POST["ImagenURL"]
+
+            product = Product(name=name, price=price, discount=discount, description=description, imgURL=imgURL)
+            product.save()
+            
+            return JsonResponse({
+                "message": "Product added"
+            }, status=201)
+        except IntegrityError:
+            return JsonResponse({
+                "message": "Product not added"
+            }, status=406)
     if request.method == "DELETE":
         try:
             product = Product.objects.get(id=productId)
