@@ -2,23 +2,44 @@
 {% load static %}
 
 {% block body %}
+<div class="form-group2">
+    <form action="" method="">          
+        <div style="display: flex; align-items: center"></div>    
+        <h3><b>Nuevo Producto</b></h3>
+        <input class="controls" type="text" name="Nombre" id="nombre" placeholder="Ingrese Nombre del Producto">
+        <input class="controls" type="text" name="Precio" id="precio" placeholder="Ingrese Precio">
+        <input class="controls" type="text" name="Descuento" id="Descuento" placeholder="ingrese Descuento">
+        <input class="controls" type="text" name="Descripción" id="Descripción" placeholder="Ingrese Descripción"> 
+        <input class="controls" type="text" name="ImgenURL" id="imagen" placeholder="Ingrese imagen URL">           
+        <button class="common-button" onclick="addProduct('{{product.id}}')">Agregar</button>          
+</div>
+</form>
+</div>
+<hr>
+<h3><b><center>Productos Disponibles</center></b></h3>
+<div class="form-row">
     {% for product in products %}
-        <div style="display: flex; align-items: center">
-            <p>{{product.name}}</p>
-            <button class="common-button" onclick="removeProduct('{{product.id}}')">Eliminar</button>
-        </div>
-    {% endfor %}
-    {% endblock %}
+    <div class="col-12 col-sm-4 col-lg-2 p-2">
+        <article class="card h-80 bg-sucess">
+            <div style="display: flex; align-items: center">
+                <p>{{product.name}}</p>
+                <button class="common-button" onclick="removeProduct('{{product.id}}')">Eliminar</button>
+            </div>
+        </article>
+    </div>
+{% endfor %}
+</div>
+{% endblock %}
 {% block script %}
 <script>
     function removeProduct(productId) {
         fetch('products/' + productId, {
             method: 'DELETE'
-            })
+        })
             .then(response => response.json())
             .then(data => {
                 console.log(data.message);
-                location.href="{% url 'productsCrud' %}"
+                location.href = "{% url 'productsCrud' %}"
             });
     }
 </script>
