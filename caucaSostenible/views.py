@@ -62,12 +62,6 @@ def cart_view(request):
 
     return render(request, "general/cart.html", {"bill": bill, "billDetails": billDetails})
 
-def cart_products_view(request):
-    products = Product.objects.all()
-
-    return render(request, "general/cart_producto.html", {"products": products})
-
-
 def farming_offers_view(request):
     products = Product.objects.all().exclude(discount=0)
     billDetails = None
@@ -137,6 +131,36 @@ def logout_view(request):
 
 def maintenance(request):
     return render(request, "general/maintenance.html")
+
+@csrf_exempt
+@login_required
+def products(request, productId):
+    if request.method == "DELETE":
+        try:
+            product = Product.objects.get(id=productId)
+
+            if product:
+                billDetails = BillDetail.objects.all().filter(product=product)
+
+                for billDetail in billDetails:
+                    billDetail.bill.total -= product.price - product.discount
+                    billDetail.delete()
+
+                product.delete()
+
+
+            return JsonResponse({
+                "message": "Product removed"
+            }, status=201)
+        except IntegrityError:
+            return JsonResponse({
+                "message": "Product not removed"
+            }, status=406)
+
+def products_crud_view(request):
+    products = Product.objects.all()
+
+    return render(request, "general/productos_crud.html", {"products": products})
 
 def register(request):
     if request.method == "POST":

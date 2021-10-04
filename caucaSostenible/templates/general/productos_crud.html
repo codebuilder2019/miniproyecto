@@ -2,5 +2,24 @@
 {% load static %}
 
 {% block body %}
-
+    {% for product in products %}
+        <div style="display: flex; align-items: center">
+            <p>{{product.name}}</p>
+            <button class="common-button" onclick="removeProduct('{{product.id}}')">Eliminar</button>
+        </div>
+    {% endfor %}
+    {% endblock %}
+{% block script %}
+<script>
+    function removeProduct(productId) {
+        fetch('products/' + productId, {
+            method: 'DELETE'
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.message);
+                location.href="{% url 'productsCrud' %}"
+            });
+    }
+</script>
 {% endblock %}
