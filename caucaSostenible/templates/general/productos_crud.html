@@ -2,32 +2,39 @@
 {% load static %}
 
 {% block body %}
-<div class="form-group2">
-    <form action="" method="">          
-        <div style="display: flex; align-items: center"></div>    
-        <h3><b>Nuevo Producto</b></h3>
-        <input class="controls" type="text" name="Nombre" id="nombre" placeholder="Ingrese Nombre del Producto">
-        <input class="controls" type="text" name="Precio" id="precio" placeholder="Ingrese Precio">
-        <input class="controls" type="text" name="Descuento" id="Descuento" placeholder="ingrese Descuento">
-        <input class="controls" type="text" name="Descripción" id="Descripción" placeholder="Ingrese Descripción"> 
-        <input class="controls" type="text" name="ImgenURL" id="imagen" placeholder="Ingrese imagen URL">           
-        <button class="common-button" onclick="addProduct('{{product.id}}')">Agregar</button>          
-</div>
-</form>
-</div>
-<hr>
-<h3><b><center>Productos Disponibles</center></b></h3>
-<div class="form-row">
-    {% for product in products %}
-    <div class="col-12 col-sm-4 col-lg-2 p-2">
-        <article class="card h-80 bg-sucess">
-            <div style="display: flex; align-items: center">
-                <p>{{product.name}}</p>
-                <button class="common-button" onclick="removeProduct('{{product.id}}')">Eliminar</button>
+<div id="main-container">
+    <center><h2>Nuevo Producto</h2></center>
+    <br>
+    <div class="form-group2">
+        <form action="" method="">          
+            <div style="display: flex; align-items: center">   
+                <input class="form-input" type="text" name="Nombre" id="nombre" placeholder="Ingrese Nombre del Producto">
+                <input class="form-input" type="text" name="Precio" id="precio" placeholder="Ingrese Precio">
+                <input class="form-input" type="text" name="Descuento" id="Descuento" placeholder="ingrese Descuento">
+                <input class="form-input" type="text" name="Descripción" id="Descripción" placeholder="Ingrese Descripción"> 
+                <input class="form-input" type="text" name="ImgenURL" id="imagen" placeholder="Ingrese imagen URL">           
+                <button class="common-button" onclick="addProduct('{{product.id}}')">Agregar</button>          
             </div>
-        </article>
+        </form>
     </div>
-{% endfor %}
+    <br>
+    <hr>
+    <br>
+    <br>
+    <center><h2>Productos Disponibles</h2></center>
+    <br>
+    <div class="form-row">
+        {% for product in products %}
+            <div class="col-12 col-sm-4 col-lg-2 p-2">
+                <article class="card h-80 bg-sucess">
+                    <div style="display: flex; align-items: center; justify-content: space-between; padding: 5px 5px;">
+                        <p>{{product.name}}</p>
+                        <button class="common-button" onclick="removeProduct('{{product.id}}')">Eliminar</button>
+                    </div>
+                </article>
+            </div>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}
 {% block script %}
