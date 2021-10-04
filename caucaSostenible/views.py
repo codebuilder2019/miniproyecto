@@ -163,6 +163,21 @@ def products_crud_view(request):
 
     return render(request, "general/productos_crud.html", {"products": products})
 
+def undertakings_crud_view(request):
+    undertakings = Undertaking.objects.all()
+
+    return render(request, "general/emprendimientos_crud.html", {"undertakings": undertakings})
+
+def investors_crud_view(request):
+    investors = Investor.objects.all()
+
+    return render(request, "general/inversionistas_crud.html", {"investors": investors})
+
+def events_crud_view(request):
+    events = Event.objects.all()
+
+    return render(request, "general/eventos_crud.html", {"events": events})
+
 def register(request):
     if request.method == "POST":
         username = request.POST["username"]
