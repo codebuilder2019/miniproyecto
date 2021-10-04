@@ -5,21 +5,22 @@
 <div id="main-container">
     <h1>
         <center>Eventos</center>
-    </h1>
-    
-    <div class="form-row">
-        {% for event in events %}
-        <div class="col-1 col-sm-1 col-lg-3 p-3">
-            <article class="card h-100 bg-sucess">
-                <center>
-                    <h3 class="title">{{ event.name}}</h3>
-                    <p style="text-align: justify;">{{event.description}}</p>
-                    <iframe src="https://www.google.com/maps/d/embed?mid=1F7B0_t-ij_vbqXhnC8PNVyP5XHE0vQTV" width="200" height="200"></iframe>
-                </center>
-           </article>
+    </h1>    
+    <div class="container">
+        <div class="row">
+            <div class="col-9">.
+            </div>
+            <div class="col-4 p-3">              
+                {% for event in events %}
+                <h3 class="title">{{ event.name}}</h3>
+                <hr style="text-align: justify;">{{event.description}}</hr>
+                {% endfor %}            
+            </div>
+            <div class="col-6">
+                <iframe src="https://www.google.com/maps/d/embed?mid=1F7B0_t-ij_vbqXhnC8PNVyP5XHE0vQTV" width="640"
+                height="480"></iframe>                
+            </div>
         </div>
-        {% endfor %}
-    </div>    
-    
+    </div>
 </div>
 {% endblock %}
