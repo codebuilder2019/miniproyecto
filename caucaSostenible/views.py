@@ -181,10 +181,8 @@ def maintenance(request):
 @csrf_exempt
 @login_required
 def products(request, productId):
-    print("A")
     if request.method == "POST":
         try:
-            print("B")
             name = request.POST["Nombre"]
             price = request.POST["Precio"]
             discount = request.POST["Descuento"]
