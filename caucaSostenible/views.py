@@ -62,6 +62,16 @@ def cart_view(request):
 
     return render(request, "general/cart.html", {"bill": bill, "billDetails": billDetails})
 
+def events_crud_view(request):
+    events = Event.objects.all()
+
+    return render(request, "general/eventos_crud.html", {"events": events})
+
+def events_view(request):
+    events = Event.objects.all()
+
+    return render(request, "general/eventos.html", {"events": events})
+
 def farming_offers_view(request):
     products = Product.objects.all().exclude(discount=0)
     billDetails = None
@@ -86,16 +96,16 @@ def farming_stocks_view(request):
 
     return render(request, "general/canasta_agricola.html", {"products": products, "billDetails": billDetails})
 
-def events_view(request):
-    events = Event.objects.all()
-
-    return render(request, "general/eventos.html", {"events": events})
-
 def index(request):
     if request.user.is_authenticated:
         return render(request, "general/index.html")
     else:
         return HttpResponseRedirect(reverse("login"))
+
+def investors_crud_view(request):
+    investors = Investor.objects.all()
+
+    return render(request, "general/inversionistas_crud.html", {"investors": investors})
 
 def investors_view(request):
     investors = Investor.objects.all()
@@ -163,21 +173,6 @@ def products_crud_view(request):
 
     return render(request, "general/productos_crud.html", {"products": products})
 
-def undertakings_crud_view(request):
-    undertakings = Undertaking.objects.all()
-
-    return render(request, "general/emprendimientos_crud.html", {"undertakings": undertakings})
-
-def investors_crud_view(request):
-    investors = Investor.objects.all()
-
-    return render(request, "general/inversionistas_crud.html", {"investors": investors})
-
-def events_crud_view(request):
-    events = Event.objects.all()
-
-    return render(request, "general/eventos_crud.html", {"events": events})
-
 def register(request):
     if request.method == "POST":
         username = request.POST["username"]
@@ -206,6 +201,11 @@ def register(request):
         return HttpResponseRedirect(reverse("index"))
     else:
         return render(request, "general/register.html")
+
+def undertakings_crud_view(request):
+    undertakings = Undertaking.objects.all()
+
+    return render(request, "general/emprendimientos_crud.html", {"undertakings": undertakings})
 
 def undertakings_view(request):
     undertakings = Undertaking.objects.all()

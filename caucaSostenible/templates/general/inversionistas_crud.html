@@ -1,6 +1,27 @@
+<<<<<<< HEAD
 {% extends "general/layout.html" %}
+=======
+% extends "general/layout.html" %}
+>>>>>>> 681aa3469c62b914c81efad817426b9cea1f7ee5
 {% load static %}
 
 {% block body %}
 
 {% endblock %}
+<<<<<<< HEAD
+=======
+{% block script %}
+<script>
+    function removeInvestor(investorsId) {
+        fetch('investors/' + investorsId, {
+            method: 'DELETE'
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.message);
+                location.href = "{% url 'investorsCrud' %}"
+            });
+    }
+</script>
+{% endblock %}
+>>>>>>> 681aa3469c62b914c81efad817426b9cea1f7ee5
