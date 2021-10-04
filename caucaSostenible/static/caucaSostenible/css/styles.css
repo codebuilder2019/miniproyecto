@@ -25,13 +25,13 @@ h1 {
 }
 
 h2 {
-    color:#002255;
+    color:#fcdd09;
     font-weight: bold;
     margin: 0 0 7px 0;
 }
 
 h3 {
-    color: #002255;
+    color: #fcdd09;
     /*margin: 0 0 7px 0;*/
     margin: 12px 7px 7px 0;   
 }
@@ -350,4 +350,8 @@ form{
 	border-radius: 4px;
 	font-family: 'calibri';
 	color: white;
+}
+
+.form-input {
+  margin: 0px 4px;
 }
