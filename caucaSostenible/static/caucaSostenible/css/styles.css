@@ -341,3 +341,13 @@ tbody{
   color: black;
   font-family: Verdana, sans-serif;
 }
+
+form{
+	width: auto;
+	background: #fcdd09;
+	padding: 5px;
+	margin: auto;	
+	border-radius: 4px;
+	font-family: 'calibri';
+	color: white;
+}
