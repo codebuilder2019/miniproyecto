@@ -62,6 +62,24 @@ def cart_view(request):
 
     return render(request, "general/cart.html", {"bill": bill, "billDetails": billDetails})
 
+@csrf_exempt
+@login_required
+def events(request, eventId):
+    if request.method == "DELETE":
+        try:
+            event = Event.objects.get(id=eventId)
+
+            if event:
+                event.delete()
+
+            return JsonResponse({
+                "message": "Event removed"
+            }, status=201)
+        except IntegrityError:
+            return JsonResponse({
+                "message": "Event not removed"
+            }, status=406)
+
 def events_crud_view(request):
     events = Event.objects.all()
 
@@ -101,6 +119,24 @@ def index(request):
         return render(request, "general/index.html")
     else:
         return HttpResponseRedirect(reverse("login"))
+
+@csrf_exempt
+@login_required
+def investments(request, investmentId):
+    if request.method == "DELETE":
+        try:
+            investment = Investment.objects.get(id=investmentId)
+
+            if investment:
+                investment.delete()
+
+            return JsonResponse({
+                "message": "Investment removed"
+            }, status=201)
+        except IntegrityError:
+            return JsonResponse({
+                "message": "Investment not removed"
+            }, status=406)
 
 def investors_crud_view(request):
     investors = Investor.objects.all()
@@ -201,6 +237,24 @@ def register(request):
         return HttpResponseRedirect(reverse("index"))
     else:
         return render(request, "general/register.html")
+
+@csrf_exempt
+@login_required
+def undertakings(request, undertakingId):
+    if request.method == "DELETE":
+        try:
+            undertaking = Undertaking.objects.get(id=undertakingId)
+
+            if undertaking:
+                undertaking.delete()
+
+            return JsonResponse({
+                "message": "Undertaking removed"
+            }, status=201)
+        except IntegrityError:
+            return JsonResponse({
+                "message": "Undertaking not removed"
+            }, status=406)
 
 def undertakings_crud_view(request):
     undertakings = Undertaking.objects.all()
