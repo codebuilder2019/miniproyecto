@@ -7,11 +7,11 @@
     <center><h2>Nuevo Evento</h2></center>
     <br>
     <div class="form-group2">
-        <form action="" method="">          
+        <form action="eventos/0" method="POST">          
             <div style="display: flex; align-items: center">   
                 <input class="form-input" type="text" name="Nombre" id="name" placeholder="Ingrese Nombre del Evento">
-                <input class="form-input" type="text" name="Precio" id="description" placeholder="Ingrese Descripción">                
-                <button class="common-button" onclick="addEvent('{{event.id}}')">Agregar</button>          
+                <input class="form-input" type="text" name="Descripcion" id="description" placeholder="Ingrese Descripción">                
+                <input class="common-button" type="submit" value="Agregar">       
             </div>
         </form>
     </div>
@@ -38,7 +38,7 @@
 {% block script %}
 <script>
     function removeEvent(eventId) {
-        fetch('events/' + eventId, {
+        fetch('eventos/' + eventId, {
             method: 'DELETE'
         })
             .then(response => response.json())

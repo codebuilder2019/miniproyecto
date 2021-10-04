@@ -65,7 +65,20 @@ def cart_view(request):
 @csrf_exempt
 @login_required
 def events(request, eventId):
-    if request.method == "DELETE":
+    if request.method == "POST":
+        try:
+            name = request.POST["Nombre"]
+            description = request.POST["Descripcion"]
+
+            event = Event(name=name, description=description)
+            event.save()
+            
+            return HttpResponseRedirect(reverse("eventsCrud"))
+        except IntegrityError:
+            return JsonResponse({
+                "message": "Product not added"
+            }, status=406)
+    elif request.method == "DELETE":
         try:
             event = Event.objects.get(id=eventId)
 
@@ -122,20 +135,35 @@ def index(request):
 
 @csrf_exempt
 @login_required
-def investments(request, investmentId):
-    if request.method == "DELETE":
+def investors(request, investorId):
+    if request.method == "POST":
         try:
-            investment = Investment.objects.get(id=investmentId)
+            name = request.POST["Nombre"]
+            description = request.POST["Descripcion"]
+            email = request.POST["Email"]
+            imgURL = request.POST["ImagenURL"]
 
-            if investment:
-                investment.delete()
+            investor = Investor(name=name, description=description, email=email, imgURL=imgURL)
+            investor.save()
+            
+            return HttpResponseRedirect(reverse("investorsCrud"))
+        except IntegrityError:
+            return JsonResponse({
+                "message": "Product not added"
+            }, status=406)
+    elif request.method == "DELETE":
+        try:
+            investor = Investor.objects.get(id=investorId)
+
+            if investor:
+                investor.delete()
 
             return JsonResponse({
-                "message": "Investment removed"
+                "message": "Investor removed"
             }, status=201)
         except IntegrityError:
             return JsonResponse({
-                "message": "Investment not removed"
+                "message": "Investor not removed"
             }, status=406)
 
 def investors_crud_view(request):
@@ -192,14 +220,12 @@ def products(request, productId):
             product = Product(name=name, price=price, discount=discount, description=description, imgURL=imgURL)
             product.save()
             
-            return JsonResponse({
-                "message": "Product added"
-            }, status=201)
+            return HttpResponseRedirect(reverse("productsCrud"))
         except IntegrityError:
             return JsonResponse({
                 "message": "Product not added"
             }, status=406)
-    if request.method == "DELETE":
+    elif request.method == "DELETE":
         try:
             product = Product.objects.get(id=productId)
 
@@ -259,7 +285,23 @@ def register(request):
 @csrf_exempt
 @login_required
 def undertakings(request, undertakingId):
-    if request.method == "DELETE":
+    if request.method == "POST":
+        try:
+            name = request.POST["Nombre"]
+            description = request.POST["Descripcion"]
+            location = request.POST["Ubicacion"]
+            phone = request.POST["Telefono"]
+            imgURL = request.POST["ImagenURL"]
+
+            undertaking = Undertaking(name=name, description=description, location=location, phone=phone, imgURL=imgURL)
+            undertaking.save()
+            
+            return HttpResponseRedirect(reverse("undertakingsCrud"))
+        except IntegrityError:
+            return JsonResponse({
+                "message": "Product not added"
+            }, status=406)
+    elif request.method == "DELETE":
         try:
             undertaking = Undertaking.objects.get(id=undertakingId)
 

@@ -32,13 +32,13 @@
                         <a class="nav-link menu-option" href="{% url 'agro-oferta' %}">Agro Oferta</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link menu-option" href="{% url 'emprendimientos' %}">Emprendimientos</a>
+                        <a class="nav-link menu-option" href="{% url 'undertakingsView' %}">Emprendimientos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link menu-option" href="{% url 'inversionistas' %}">Inversionistas</a>
+                        <a class="nav-link menu-option" href="{% url 'investorsView' %}">Inversionistas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link menu-option" href="{% url 'eventos' %}">Eventos</a>
+                        <a class="nav-link menu-option" href="{% url 'eventsView' %}">Eventos</a>
                     </li>
                     {% if user.is_authenticated %}
                         <li class="nav-item">

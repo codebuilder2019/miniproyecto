@@ -6,13 +6,13 @@
     <center><h2>Nuevo Inversionista</h2></center>
     <br>
     <div class="form-group2">
-        <form action="" method="">          
+        <form action="inversionistas/0" method="POST">          
             <div style="display: flex; align-items: center">   
                 <input class="form-input" type="text" name="Nombre" id="name" placeholder="Ingrese Nombre Inversionista">
-                <input class="form-input" type="text" name="Precio" id="description" placeholder="Ingrese Descripción">
-                <input class="form-input" type="text" name="email" id="email" placeholder="ingrese email">               
-                <input class="form-input" type="text" name="ImgenURL" id="imagen" placeholder="Ingrese imagen URL">           
-                <button class="common-button" onclick="addProduct('{{investor.id}}')">Agregar</button>          
+                <input class="form-input" type="text" name="Descripcion" id="description" placeholder="Ingrese Descripción">
+                <input class="form-input" type="text" name="Email" id="email" placeholder="ingrese email">               
+                <input class="form-input" type="text" name="ImagenURL" id="imagen" placeholder="Ingrese imagen URL">           
+                <input class="common-button" type="submit" value="Agregar">     
             </div>
         </form>
     </div>
@@ -38,8 +38,8 @@
 {% endblock %}
 {% block script %}
 <script>
-    function removeInvestor(investorsId) {
-        fetch('investors/' + investorsId, {
+    function removeInvestor(investorId) {
+        fetch('inversionistas/' + investorId, {
             method: 'DELETE'
         })
             .then(response => response.json())
@@ -50,7 +50,3 @@
     }
 </script>
 {% endblock %}
-<<<<<<< HEAD
-=======
-
->>>>>>> 353fba6e49df6f4b6f3e51aa6cbcd0b1bda09d9d

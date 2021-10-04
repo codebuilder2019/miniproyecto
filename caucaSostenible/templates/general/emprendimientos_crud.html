@@ -7,14 +7,14 @@
     <center><h2>Nuevo Emprendimiento</h2></center>
     <br>
     <div class="form-group2">
-        <form action="" method="">          
+        <form action="emprendimientos/0" method="POST">          
             <div style="display: flex; align-items: center">   
                 <input class="form-input" type="text" name="Nombre" id="name" placeholder="Ingrese Nombre del Emprendimiento">
-                <input class="form-input" type="text" name="Precio" id="description" placeholder="Ingrese Descripción">
-                <input class="form-input" type="text" name="Descuento" id="location" placeholder="ingrese Localización">
-                <input class="form-input" type="text" name="Descripción" id="phone" placeholder="Ingrese Telefono"> 
-                <input class="form-input" type="text" name="ImgenURL" id="imgUrl" placeholder="Ingrese imagen URL">           
-                <button class="common-button" onclick="addundertaking('{{product.id}}')">Agregar</button>          
+                <input class="form-input" type="text" name="Descripcion" id="description" placeholder="Ingrese Descripción">
+                <input class="form-input" type="text" name="Ubicacion" id="location" placeholder="ingrese Localización">
+                <input class="form-input" type="text" name="Telefono" id="phone" placeholder="Ingrese Telefono"> 
+                <input class="form-input" type="text" name="ImagenURL" id="imgUrl" placeholder="Ingrese imagen URL">           
+                <input class="common-button" type="submit" value="Agregar">      
             </div>
         </form>
     </div>
@@ -41,7 +41,7 @@
 {% block script %}
 <script>
     function removeUndertaking(undertakingId) {
-        fetch('undertakings/' + undertakingId, {
+        fetch('emprendimientos/' + undertakingId, {
             method: 'DELETE'
         })
             .then(response => response.json())
