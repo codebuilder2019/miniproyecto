@@ -143,11 +143,12 @@ def products(request, productId):
                 billDetails = BillDetail.objects.all().filter(product=product)
 
                 for billDetail in billDetails:
-                    billDetail.bill.total -= product.price - product.discount
+                    bill = billDetail.bill
+                    bill.total -= product.price - product.discount
+                    bill.save()
                     billDetail.delete()
 
                 product.delete()
-
 
             return JsonResponse({
                 "message": "Product removed"
