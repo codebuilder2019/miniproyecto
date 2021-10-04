@@ -4,3 +4,17 @@
 {% block body %}
 
 {% endblock %}
+{% block script %}
+<script>
+    function removeUndertaking(undertakingId) {
+        fetch('undertakings/' + undertakingId, {
+            method: 'DELETE'
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.message);
+                location.href = "{% url 'undertakingsCrud' %}"
+            });
+    }
+</script>
+{% endblock %}
