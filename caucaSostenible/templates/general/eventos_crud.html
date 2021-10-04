@@ -3,6 +3,37 @@
 
 {% block body %}
 
+<div id="main-container">
+    <center><h2>Nuevo Evento</h2></center>
+    <br>
+    <div class="form-group2">
+        <form action="" method="">          
+            <div style="display: flex; align-items: center">   
+                <input class="form-input" type="text" name="Nombre" id="name" placeholder="Ingrese Nombre del Evento">
+                <input class="form-input" type="text" name="Precio" id="description" placeholder="Ingrese Descripción">                
+                <button class="common-button" onclick="addEvent('{{event.id}}')">Agregar</button>          
+            </div>
+        </form>
+    </div>
+    <br>
+    <hr>
+    <br>
+    <br>
+    <center><h2>Eventos</h2></center>
+    <br>
+    <div class="form-row">
+        {% for event in events %}
+            <div class="col-12 col-sm-4 col-lg-2 p-2">
+                <article class="card h-80 bg-sucess">
+                    <div style="display: flex; align-items: center; justify-content: space-between; padding: 5px 5px;">
+                        <p>{{event.name}}</p>
+                        <button class="common-button" onclick="removeEvent('{{event.id}}')">Eliminar</button>
+                    </div>
+                </article>
+            </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}
 {% block script %}
 <script>

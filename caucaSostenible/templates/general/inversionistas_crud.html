@@ -2,7 +2,39 @@
 {% load static %}
 
 {% block body %}
-
+<div id="main-container">
+    <center><h2>Nuevo Inversionista</h2></center>
+    <br>
+    <div class="form-group2">
+        <form action="" method="">          
+            <div style="display: flex; align-items: center">   
+                <input class="form-input" type="text" name="Nombre" id="name" placeholder="Ingrese Nombre Inversionista">
+                <input class="form-input" type="text" name="Precio" id="description" placeholder="Ingrese Descripción">
+                <input class="form-input" type="text" name="email" id="email" placeholder="ingrese email">               
+                <input class="form-input" type="text" name="ImgenURL" id="imagen" placeholder="Ingrese imagen URL">           
+                <button class="common-button" onclick="addProduct('{{investor.id}}')">Agregar</button>          
+            </div>
+        </form>
+    </div>
+    <br>
+    <hr>
+    <br>
+    <br>
+    <center><h2>Inversionistas</h2></center>
+    <br>
+    <div class="form-row">
+        {% for investor in investors %}
+            <div class="col-12 col-sm-4 col-lg-2 p-2">
+                <article class="card h-80 bg-sucess">
+                    <div style="display: flex; align-items: center; justify-content: space-between; padding: 5px 5px;">
+                        <p>{{investor.name}}</p>
+                        <button class="common-button" onclick="removeInvestor('{{investor.id}}')">Eliminar</button>
+                    </div>
+                </article>
+            </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}
 {% block script %}
 <script>
@@ -18,3 +50,7 @@
     }
 </script>
 {% endblock %}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 353fba6e49df6f4b6f3e51aa6cbcd0b1bda09d9d

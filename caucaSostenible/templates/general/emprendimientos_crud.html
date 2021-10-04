@@ -3,6 +3,40 @@
 
 {% block body %}
 
+<div id="main-container">
+    <center><h2>Nuevo Emprendimiento</h2></center>
+    <br>
+    <div class="form-group2">
+        <form action="" method="">          
+            <div style="display: flex; align-items: center">   
+                <input class="form-input" type="text" name="Nombre" id="name" placeholder="Ingrese Nombre del Emprendimiento">
+                <input class="form-input" type="text" name="Precio" id="description" placeholder="Ingrese Descripción">
+                <input class="form-input" type="text" name="Descuento" id="location" placeholder="ingrese Localización">
+                <input class="form-input" type="text" name="Descripción" id="phone" placeholder="Ingrese Telefono"> 
+                <input class="form-input" type="text" name="ImgenURL" id="imgUrl" placeholder="Ingrese imagen URL">           
+                <button class="common-button" onclick="addundertaking('{{product.id}}')">Agregar</button>          
+            </div>
+        </form>
+    </div>
+    <br>
+    <hr>
+    <br>
+    <br>
+    <center><h2>Emprendimientos Disponibles</h2></center>
+    <br>
+    <div class="form-row">
+        {% for undertaking in undertakings %}
+            <div class="col-12 col-sm-4 col-lg-2 p-2">
+                <article class="card h-80 bg-sucess">
+                    <div style="display: flex; align-items: center; justify-content: space-between; padding: 5px 5px;">
+                        <p>{{undertaking.name}}</p>
+                        <button class="common-button" onclick="removeUndertaking('{{undertaking.id}}')">Eliminar</button>
+                    </div>
+                </article>
+            </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}
 {% block script %}
 <script>
